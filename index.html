@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Maison Rouge — Полный конкурентный и SWOT-анализ v3.0 | Февраль 2026</title>
+<title>Maison Rouge — Полный конкурентный и SWOT-анализ v3.1 | Февраль 2026</title>
 <style>
 :root {
     --bg: #0D0B0E;
@@ -195,6 +195,84 @@ tr:hover { background: rgba(201,164,76,0.03); }
 .b-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(74,143,224,0.3); }
 .b-purple { background: var(--purple-bg); color: var(--purple); border: 1px solid rgba(144,96,208,0.3); }
 .b-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid rgba(224,128,64,0.3); }
+.b-teal { background: rgba(64,176,160,0.08); color: #40B0A0; border: 1px solid rgba(64,176,160,0.3); }
+
+/* CORRECTION BOX */
+.correction { display: flex; gap: 20px; align-items: center; padding: 16px 20px; border-radius: 10px; margin: 10px 0; background: rgba(212,64,64,0.05); border: 1px solid rgba(212,64,64,0.2); }
+.correction .old { color: var(--red); text-decoration: line-through; flex: 1; }
+.correction .arrow { color: var(--gold); font-size: 1.4em; flex-shrink: 0; }
+.correction .new { color: var(--green); font-weight: 600; flex: 1; }
+
+/* SCHEDULE GRID */
+.sched-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 16px 0; }
+.sched-day { text-align: center; padding: 12px 6px; border-radius: 8px; font-size: 0.82em; }
+.sched-day .day-name { font-weight: 700; margin-bottom: 4px; font-size: 0.9em; }
+.sched-day .day-hours { font-size: 0.78em; line-height: 1.4; }
+.sched-open { background: var(--green-bg); border: 1px solid rgba(61,184,106,0.3); color: var(--green); }
+.sched-closed { background: var(--red-bg); border: 1px solid rgba(212,64,64,0.3); color: var(--red); }
+
+/* DELTA TAG */
+.delta { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.72em; font-weight: 700; vertical-align: middle; margin-left: 6px; }
+.delta-up { background: rgba(61,184,106,0.15); color: var(--green); }
+.delta-down { background: rgba(212,64,64,0.15); color: var(--red); }
+.delta-change { background: rgba(224,128,64,0.15); color: var(--orange); }
+
+/* ALERT CARD */
+.alert { border-radius: 12px; padding: 20px; margin: 16px 0; display: flex; gap: 16px; align-items: flex-start; }
+.alert-red { background: var(--red-bg); border: 1px solid rgba(212,64,64,0.3); }
+.alert-gold { background: var(--gold-bg); border: 1px solid var(--gold-border); }
+.alert-icon { font-size: 1.8em; flex-shrink: 0; line-height: 1; }
+.alert-content h4 { margin-bottom: 6px; font-size: 1em; }
+.alert-content p { font-size: 0.88em; color: var(--text2); line-height: 1.6; }
+
+/* QUOTE CARD */
+.quote-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0; margin: 16px 0; overflow: hidden; }
+.quote-card:hover { border-color: var(--border2); }
+.quote-header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--border); background: var(--bg3); }
+.quote-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1em; flex-shrink: 0; }
+.quote-name { font-weight: 700; color: var(--text); font-size: 0.95em; }
+.quote-role { font-size: 0.78em; color: var(--text3); }
+.quote-body { padding: 20px; }
+.quote-text { font-size: 1.05em; line-height: 1.7; color: var(--text); font-style: italic; position: relative; padding-left: 24px; }
+.quote-text::before { content: '\201C'; position: absolute; left: 0; top: -8px; font-size: 2.5em; color: var(--gold); font-style: normal; opacity: 0.5; }
+.quote-context { font-size: 0.82em; color: var(--text2); margin-top: 12px; padding-left: 24px; line-height: 1.6; }
+.quote-footer { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.15); }
+.quote-date { font-size: 0.78em; color: var(--text3); }
+.quote-source { font-size: 0.78em; color: var(--blue); }
+
+/* FOUNDER CARD */
+.founder-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.founder-card:hover { border-color: var(--border2); }
+.founder-head { padding: 20px; border-bottom: 1px solid var(--border); background: var(--bg3); }
+.founder-head h4 { color: var(--gold); font-size: 1.1em; margin-bottom: 4px; }
+.founder-head .role { color: var(--text3); font-size: 0.82em; }
+.founder-body { padding: 16px 20px; }
+.founder-body table { margin: 0; }
+.founder-body td { padding: 6px 10px; font-size: 0.85em; }
+.founder-body td:first-child { color: var(--text3); width: 120px; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 24px; }
+.tl-item::before { content: ''; position: absolute; left: -26px; top: 6px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: var(--bg); }
+.tl-date { font-size: 0.78em; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+.tl-text { font-size: 0.9em; color: var(--text2); line-height: 1.6; }
+
+/* BAR CHART */
+.bar-row { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
+.bar-label { width: 160px; font-size: 0.82em; color: var(--text2); text-align: right; flex-shrink: 0; }
+.bar-track { flex: 1; background: var(--bg3); border-radius: 6px; height: 28px; position: relative; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-size: 0.78em; font-weight: 700; color: var(--bg); min-width: 50px; transition: width 0.5s; }
+.bar-fill-small { justify-content: flex-start; padding-left: 10px; color: var(--text2); }
+
+@media (max-width: 600px) {
+    .sched-grid { grid-template-columns: repeat(4, 1fr); }
+    .bar-label { width: 100px; font-size: 0.75em; }
+    .correction { flex-direction: column; gap: 8px; }
+    .quote-header { flex-direction: column; text-align: center; }
+    .founder-body td:first-child { width: 80px; }
+}
 
 /* SWOT GRID */
 .swot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
@@ -600,7 +678,11 @@ footer {
     <a href="#benchmarks">Бенчмарки</a>
     <a href="#strategy">Выводы</a>
     <a href="#open-questions" style="color:var(--text3);">V. Прил.</a>
-    <a href="#spravka" style="background:var(--gold-bg)">Справка</a>
+    <a href="#spravka">Справка</a>
+    <a href="#factcheck-errors" style="color:var(--text3); background:rgba(212,64,64,0.1); border-color:rgba(212,64,64,0.3);">VI. Фактчек</a>
+    <a href="#factcheck-competitors" style="background:rgba(212,64,64,0.1); border-color:rgba(212,64,64,0.3);">Digital v2</a>
+    <a href="#founders" style="color:var(--text3); background:rgba(144,96,208,0.1); border-color:rgba(144,96,208,0.3);">VII. Фаундеры</a>
+    <a href="#opinions" style="background:rgba(144,96,208,0.1); border-color:rgba(144,96,208,0.3);">Мнения</a>
 </div>
 </div>
 
@@ -5164,11 +5246,1272 @@ MR: 86 отзывов за ~3 месяца работы = ~28 отзывов/м�
 
 </div>
 </div>
+
+<!-- ═══════════════════════ PART VI: ФАКТЧЕК (добавлено 15.02.2026) ═══════════════════════ -->
+<!-- ===== SECTION 20: CORRECTIONS SUMMARY ===== -->
+<div class="section" id="factcheck-errors">
+    <div class="section-head">
+        <div class="section-num" style="background:var(--red);">20</div>
+        <h2>Исправленные ошибки в отчёте v3.0</h2>
+    </div>
+    <p style="color:var(--text2); margin-bottom:20px;">В ходе фактчекинга выявлены <strong style="color:var(--red);">2 критические ошибки</strong> в основном отчёте, влияющие на стратегические выводы.</p>
+
+    <div class="card card-red">
+        <h3 style="color:var(--red);">Ошибка №1: Instagram Maison Rouge</h3>
+        <div class="correction">
+            <div class="old">~0 подписчиков (не найден)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="new">~5 000 подписчиков (@maisonrrouge)</div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            <strong style="color:var(--text);">Причина ошибки:</strong> Хендл <code style="color:var(--gold);">@maisonrrouge</code> (с двойной &laquo;r&raquo;) не был найден автоматическим аудитом.
+            Аккаунт существует, активен, публикует Reels и Stories. Telegram-канал <code style="color:var(--gold);">@maisonrouge_spb</code> (~426 подписчиков) также существует и указан на официальном сайте.
+        </p>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:8px;">
+            <strong style="color:var(--text);">Влияние на выводы:</strong> Digital-присутствие MR не &laquo;нулевое&raquo;, а &laquo;начальное&raquo;. Оценка SMM повышается с <span class="neg">1/10</span> до <span style="color:var(--orange); font-weight:600;">3/10</span>.
+            Рекомендация &laquo;создать Instagram&raquo; меняется на &laquo;масштабировать существующий Instagram&raquo;.
+        </p>
+    </div>
+
+    <div class="card card-red">
+        <h3 style="color:var(--red);">Ошибка №2: Режим работы Maison Rouge</h3>
+        <div class="correction">
+            <div class="old">Закрыт Пн-Вт, работает Ср-Вс (5 дней)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="new">Закрыт Пн, Вт, Вс &mdash; работает Ср-Сб (4 дня)</div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            <strong style="color:var(--text);">Причина ошибки:</strong> Данные агрегаторов (Flamp, 2ГИС) расходятся между собой. Flamp показывал работу в воскресенье. Фактически ресторан закрыт в воскресенье &mdash; подтверждено заказчиком.
+        </p>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:8px;">
+            <strong style="color:var(--text);">Влияние на выводы:</strong> Потеря оборота &mdash; <strong style="color:var(--red);">3/7 (43%)</strong> вместо прежних 2/7 (29%).
+            Это усиливает рекомендацию о тестировании воскресного бранча и ставит MR в ещё более уязвимую позицию по сравнению с конкурентами, работающими 7/7.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SECTION 21: MR DIGITAL PRESENCE (CORRECTED) ===== -->
+<div class="section" id="factcheck-digital">
+    <div class="section-head">
+        <div class="section-num">21</div>
+        <h2>Maison Rouge: цифровое присутствие (исправлено)</h2>
+    </div>
+
+    <div class="info-tip">
+        <div class="ii">i</div>
+        <span>Данные верифицированы по открытым источникам + подтверждены заказчиком (14.02.2026).</span>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+        <div class="metric">
+            <div class="val" style="color:var(--green);">~5 000 <span class="delta delta-up">&uarr; с 0</span></div>
+            <div class="lbl">Instagram @maisonrrouge</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--blue);">~426</div>
+            <div class="lbl">Telegram @maisonrouge_spb</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--text3);">Есть</div>
+            <div class="lbl">VK (club233351097)</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Платформы Maison Rouge</h3>
+        <table>
+            <thead>
+                <tr><th>Платформа</th><th>Аккаунт</th><th>Подписчики</th><th>Статус</th><th>Было в отчёте</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">Instagram</td>
+                    <td><code style="color:var(--blue);">@maisonrrouge</code></td>
+                    <td class="pos">~5 000</td>
+                    <td><span class="badge b-green">Активен</span></td>
+                    <td class="neg">~0 (не найден) &mdash; ОШИБКА</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">Telegram</td>
+                    <td><code style="color:var(--blue);">@maisonrouge_spb</code></td>
+                    <td style="color:var(--text);">~426</td>
+                    <td><span class="badge b-green">Активен</span></td>
+                    <td style="color:var(--green);">Есть &mdash; верно</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">VK</td>
+                    <td><code style="color:var(--blue);">club233351097</code></td>
+                    <td style="color:var(--text3);">Неизвестно</td>
+                    <td><span class="badge b-orange">Малоактивен</span></td>
+                    <td class="neg">Нет &mdash; ОШИБКА</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">Сайт</td>
+                    <td><code style="color:var(--blue);">maison-rouge.ru</code></td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-green">Активен</span></td>
+                    <td style="color:var(--green);">Да &mdash; верно</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text3);">Facebook</td>
+                    <td style="color:var(--text3);">Не найден</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-red">Нет</span></td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text3);">TikTok</td>
+                    <td style="color:var(--text3);">Не найден</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-red">Нет</span></td>
+                    <td>&mdash;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card card-green">
+        <h3 style="color:var(--green);">Пересмотр оценки SMM</h3>
+        <div class="correction" style="background:rgba(61,184,106,0.05); border-color:rgba(61,184,106,0.2);">
+            <div class="old">Оценка SMM: 1/10 КРИТИЧЕСКИ</div>
+            <div class="arrow" style="color:var(--green);">&rarr;</div>
+            <div class="new">Оценка SMM: 3/10 СЛАБО</div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            Instagram есть и ведётся (Reels, Stories). Telegram-канал существует. Но: 5K подписчиков при конкурентах с 18-133K &mdash; всё ещё значительное отставание. Стратегия должна быть &laquo;масштабировать&raquo;, а не &laquo;создать с нуля&raquo;.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SECTION 22: SCHEDULE CORRECTION ===== -->
+<div class="section" id="factcheck-schedule">
+    <div class="section-head">
+        <div class="section-num">22</div>
+        <h2>Режим работы: исправленный (Ср-Сб)</h2>
+    </div>
+
+    <div class="card">
+        <h3>Maison Rouge &mdash; фактический график</h3>
+        <div class="sched-grid">
+            <div class="sched-day sched-closed">
+                <div class="day-name">ПН</div>
+                <div class="day-hours">Закрыт</div>
+            </div>
+            <div class="sched-day sched-closed">
+                <div class="day-name">ВТ</div>
+                <div class="day-hours">Закрыт</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">СР</div>
+                <div class="day-hours">17:00&ndash;01:00</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">ЧТ</div>
+                <div class="day-hours">17:00&ndash;01:00</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">ПТ</div>
+                <div class="day-hours">17:00&ndash;04:00</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">СБ</div>
+                <div class="day-hours">17:00&ndash;04:00</div>
+            </div>
+            <div class="sched-day sched-closed">
+                <div class="day-name">ВС</div>
+                <div class="day-hours">Закрыт <span class="delta delta-change">NEW</span></div>
+            </div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            <strong style="color:var(--red);">4 рабочих дня из 7</strong> &mdash; потеря <strong style="color:var(--red);">43%</strong> потенциального оборота.
+            В отчёте v3.0 было указано 5 дней (Ср-Вс, потеря 29%). Реальность хуже на 14 п.п.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Сравнение графиков: MR vs Конкуренты</h3>
+        <table>
+            <thead>
+                <tr><th>Заведение</th><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th><th>Дней</th><th>Потеря</th></tr>
+            </thead>
+            <tbody>
+                <tr style="background:rgba(212,64,64,0.06);">
+                    <td style="color:var(--gold); font-weight:700;">Maison Rouge</td>
+                    <td class="neg">&times;</td>
+                    <td class="neg">&times;</td>
+                    <td class="pos">17-01</td>
+                    <td class="pos">17-01</td>
+                    <td class="pos">17-04</td>
+                    <td class="pos">17-04</td>
+                    <td class="neg">&times;</td>
+                    <td><strong style="color:var(--red);">4</strong></td>
+                    <td class="neg">43%</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--red); font-weight:600;">Сплетни by Asti</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+                <tr>
+                    <td>КЭФ</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-02</td>
+                    <td class="pos">12-02</td>
+                    <td class="pos">12-23</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+                <tr>
+                    <td>Terrassa</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">12-24</td>
+                    <td class="pos">12-24</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+                <tr>
+                    <td>Commode</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-07</td>
+                    <td class="pos">18-07</td>
+                    <td class="pos">18-05</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="color:var(--red); font-size:0.88em; margin-top:12px; font-weight:600;">
+            Maison Rouge &mdash; единственное заведение из 5 с выходными днями. Все конкуренты работают 7/7.
+        </p>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--orange);">
+        <h3 style="color:var(--orange);">Рекомендация: Воскресный бранч</h3>
+        <p style="color:var(--text2); font-size:0.9em; line-height:1.7;">
+            Потеря 3/7 оборота критична. Тестировать &laquo;воскресный бранч&raquo; (12:00-17:00) как отдельный формат с минимальным ФОТ (сокращённая бригада). Конкуренты типа Terrassa и КЭФ собирают воскресный трафик с обеда.
+            <br><br>
+            <strong style="color:var(--text);">Потенциал:</strong> Воскресенье &mdash; второй по посещаемости день для ресторанов СПб (после субботы). Добавление 1 дня = +25% к текущей 4-дневной выручке.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SECTION 23: FULL COMPETITOR DIGITAL AUDIT ===== -->
+<div class="section" id="factcheck-competitors">
+    <div class="section-head">
+        <div class="section-num">23</div>
+        <h2>Конкурентный digital-аудит: полная таблица</h2>
+    </div>
+
+    <div class="info-tip">
+        <div class="ii">i</div>
+        <span>Данные собраны 14.02.2026 из открытых источников: поисковые системы, Telemetr.me, 2ГИС, Яндекс Карты. Числа подписчиков &mdash; приблизительные (Instagram не отдаёт данные без авторизации). Добавлены <strong>Birch</strong> и <strong>Кококо</strong>, которых не было в предыдущей таблице.</span>
+    </div>
+
+    <div class="card" style="overflow-x:auto;">
+        <h3>Сводная таблица: соцсети всех конкурентов</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ресторан</th>
+                    <th>Instagram</th>
+                    <th>IG подписчики</th>
+                    <th>Telegram</th>
+                    <th>TG подписчики</th>
+                    <th>VK</th>
+                    <th>VK подписчики</th>
+                    <th>Оценка SMM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:rgba(201,164,76,0.06);">
+                    <td style="color:var(--gold);">&#9733;</td>
+                    <td style="color:var(--gold); font-weight:700;">Maison Rouge</td>
+                    <td><code>@maisonrrouge</code></td>
+                    <td style="color:var(--orange); font-weight:600;">~5 000 <span class="delta delta-up">&uarr;</span></td>
+                    <td><code>@maisonrouge_spb</code></td>
+                    <td>~426</td>
+                    <td>Есть</td>
+                    <td style="color:var(--text3);">Мало</td>
+                    <td><span class="badge b-orange">3/10</span></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td style="font-weight:600;">Birch <span class="delta delta-change">NEW</span></td>
+                    <td><code>@birch_saintp</code></td>
+                    <td class="pos" style="font-weight:700;">~133 000</td>
+                    <td>Есть (2ГИС)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-green">9/10</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td style="font-weight:600;">Кококо <span class="delta delta-change">NEW</span></td>
+                    <td><code>@cococogroup.restaurants</code></td>
+                    <td class="pos" style="font-weight:700;">~72 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/kokoko_spb</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td><span class="badge b-green">8/10</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td style="color:var(--red); font-weight:600;">Сплетни by Asti</td>
+                    <td><code>@spletni.piter</code></td>
+                    <td class="pos">~56 000</td>
+                    <td style="color:var(--text3);">Нет отд.</td>
+                    <td>&mdash;</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-green">9/10</span></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Мансарда</td>
+                    <td><code>@mansarda_rest</code></td>
+                    <td class="pos">~27 000</td>
+                    <td>@spbginzaproject</td>
+                    <td style="color:var(--text3);">Общий</td>
+                    <td>Через Ginza</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-blue">6/10</span></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Terrassa</td>
+                    <td><code>@terrassa_spb</code></td>
+                    <td class="pos">~24 000</td>
+                    <td>@spbginzaproject</td>
+                    <td style="color:var(--text3);">Общий</td>
+                    <td>Через Ginza</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-blue">6/10</span></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Commode</td>
+                    <td><code>@commode.club</code></td>
+                    <td class="pos">~18 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>Есть</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td><span class="badge b-blue">7/10</span></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Wine Gogh</td>
+                    <td><code>@winegogh.rest</code></td>
+                    <td>~15 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/winegogh.rest</td>
+                    <td>~1 179</td>
+                    <td><span class="badge b-blue">7/10</span></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Блок</td>
+                    <td><code>@blokrestaurant</code></td>
+                    <td>~12 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/blokrestaurant</td>
+                    <td>~3 472</td>
+                    <td><span class="badge b-blue">6/10</span></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Палкинъ</td>
+                    <td><code>@palkin_restaurant</code></td>
+                    <td>~3 420</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/palkin_restaurant</td>
+                    <td>~581</td>
+                    <td><span class="badge b-red">3/10</span></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>КЭФ</td>
+                    <td style="color:var(--text3);">Не определён</td>
+                    <td style="color:var(--text3);">~0</td>
+                    <td>Есть (kefrest.ru)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td>Есть (ID -229935064)</td>
+                    <td style="color:var(--text3);">Мало</td>
+                    <td><span class="badge b-red">2/10</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BAR CHART: Instagram -->
+    <div class="card">
+        <h3>Instagram: подписчики (исправленная визуализация)</h3>
+        <p style="color:var(--text3); font-size:0.82em; margin-bottom:16px;">Масштаб относительно лидера (Birch = 133K = 100%)</p>
+
+        <div class="bar-row">
+            <div class="bar-label">Birch <span class="delta delta-change">NEW</span></div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:100%; background:var(--green);">133 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Кококо <span class="delta delta-change">NEW</span></div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:54.1%; background:var(--green);">72 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Сплетни by Asti</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:42.1%; background:var(--red);">56 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Мансарда</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:20.3%; background:var(--text3);">27 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Terrassa</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:18.0%; background:var(--text3);">24 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Commode</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:13.5%; background:var(--text3);">18 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Wine Gogh</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:11.3%; background:var(--text3);">15 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Блок</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:9.0%; background:var(--text3);">12 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label" style="color:var(--gold); font-weight:600;">Maison Rouge</div>
+            <div class="bar-track">
+                <div class="bar-fill bar-fill-small" style="width:3.8%; background:var(--gold);">5 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Палкинъ</div>
+            <div class="bar-track">
+                <div class="bar-fill bar-fill-small" style="width:2.6%; background:var(--text3);">3 420</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">КЭФ</div>
+            <div class="bar-track">
+                <div class="bar-fill bar-fill-small" style="width:0.5%; background:var(--red); min-width:40px;">~0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Telegram presence -->
+    <div class="card">
+        <h3>Telegram: присутствие ресторанов</h3>
+        <table>
+            <thead>
+                <tr><th>Ресторан</th><th>Telegram-канал</th><th>Подписчики</th><th>Комментарий</th></tr>
+            </thead>
+            <tbody>
+                <tr style="background:rgba(201,164,76,0.06);">
+                    <td style="color:var(--gold); font-weight:600;">Maison Rouge</td>
+                    <td><code>@maisonrouge_spb</code></td>
+                    <td>~426</td>
+                    <td>Указан на сайте. Активен.</td>
+                </tr>
+                <tr>
+                    <td>Terrassa / Мансарда</td>
+                    <td><code>@spbginzaproject</code></td>
+                    <td style="color:var(--text3);">Общий Ginza</td>
+                    <td>Единый канал для всех ресторанов Ginza Project СПб</td>
+                </tr>
+                <tr>
+                    <td>КЭФ</td>
+                    <td>Есть (через kefrest.ru)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td>Ссылка на сайте, хендл не установлен</td>
+                </tr>
+                <tr>
+                    <td>Birch</td>
+                    <td>Есть (через 2ГИС)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td>Упоминается в 2ГИС-профиле</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text3);">Сплетни, Commode, Wine Gogh, Палкинъ, Блок, Кококо</td>
+                    <td style="color:var(--text3);">Не найдены</td>
+                    <td>&mdash;</td>
+                    <td>Telegram-каналы не обнаружены</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="color:var(--text2); font-size:0.85em; margin-top:12px;">
+            <strong style="color:var(--text);">Вывод:</strong> Telegram &mdash; наименее используемая площадка среди ресторанов СПб. Большинство ведут только Instagram.
+            У MR уже есть Telegram-канал, что является конкурентным преимуществом при правильном наполнении.
+        </p>
+    </div>
+</div>
+<!-- ═══════════════════════ PART VII: ФАУНДЕРЫ И МНЕНИЯ (добавлено 15.02.2026) ═══════════════════════ -->
+<!-- ===== SECTION 24: KEY MARKET EVENTS + FOUNDERS MAP (MERGED) ===== -->
+<div class="section" id="founders">
+    <div class="section-head">
+        <div class="section-num">24</div>
+        <h2>Ключевые события рынка и карта фаундеров</h2>
+    </div>
+
+    <!-- Breaking news alerts (from ! section) -->
+    <div class="alert alert-red">
+        <div class="alert-icon">&#9888;</div>
+        <div class="alert-content">
+            <h4 style="color:var(--red);">Вадим Лапин (Ginza Project) скончался 15.01.2026</h4>
+            <p>Сооснователь Ginza Project, крупнейшей ресторанной группы России (150+ проектов, 16 городов), скончался 15 января 2026 года в возрасте 63 лет. Управление принял сын &mdash; <strong style="color:var(--text);">Марк Лапин</strong>. Второй сооснователь, Дмитрий Сергеев, уже ведёт собственные проекты отдельно. Потенциальная дестабилизация Terrassa и Мансарды &mdash; ключевых конкурентов MR в районе.</p>
+        </div>
+    </div>
+
+    <div class="alert alert-gold">
+        <div class="alert-icon" style="color:var(--gold);">&#9888;</div>
+        <div class="alert-content">
+            <h4 style="color:var(--gold);">Ginza раскалывается на две части</h4>
+            <p>С 2025 года фактически существуют два &laquo;крыла&raquo; Ginza Project. Дмитрий Сергеев развивает &laquo;Ginza Project Дмитрия Сергеева&raquo; &mdash; отдельный бренд. Смерть Лапина ускорит дивергенцию. <strong style="color:var(--text);">Для MR это окно возможностей:</strong> если управление Terrassa/Мансарда ослабнет, перераспределение трафика в районе Конюшенной площади.</p>
+        </div>
+    </div>
+
+    <div class="grid-3" style="margin-top:20px;">
+        <div class="metric">
+            <div class="val" style="color:var(--red);">188</div>
+            <div class="lbl">Закрытий ресторанов в СПб (2025)</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--green);">200+</div>
+            <div class="lbl">Открытий в СПб (2025)</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--orange);">-8%</div>
+            <div class="lbl">Падение заказов (янв 2026 vs 2025)</div>
+        </div>
+    </div>
+    <div class="grid-3" style="margin-top:0;">
+        <div class="metric">
+            <div class="val" style="color:var(--gold);">+15%</div>
+            <div class="lbl">Рост среднего чека (янв 2026)</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--red);">5-30%</div>
+            <div class="lbl">Недокомплект персонала</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--orange);">+27%</div>
+            <div class="lbl">Рост зарплат на кухне (2024)</div>
+        </div>
+    </div>
+
+    <!-- Founders map (from section 1) -->
+    <h3 style="color:var(--gold); margin:36px 0 16px; font-size:1.3em; border-bottom:1px solid var(--border); padding-bottom:8px;">Кто стоит за ресторанами: карта фаундеров</h3>
+
+    <div class="info-tip">
+        <div class="ii">i</div>
+        <span>Данные из ЕГРЮЛ, Rusprofile, СМИ (Фонтанка, Коммерсант, Собака.ru, WhereToEat, Сноб, РБК). Февраль 2026.</span>
+    </div>
+
+    <!-- Maison Rouge -->
+    <div class="card-gold card" style="border-color:var(--gold-border);">
+        <h3 style="font-size:1.3em;">&#9733; Maison Rouge &mdash; ООО &laquo;ШАГ&raquo;</h3>
+        <table>
+            <tr><td style="color:var(--text3); width:160px;">Юрлицо</td><td>ООО &laquo;ШАГ&raquo;, ИНН 7840111510, рег. 15.02.2024</td></tr>
+            <tr><td style="color:var(--text3);">Гендиректор (50%)</td><td><strong style="color:var(--gold);">Степанян Шушаник Грантовна</strong></td></tr>
+            <tr><td style="color:var(--text3);">Учредители</td><td>4 физлица (Степанян + 3, данные скрыты)</td></tr>
+            <tr><td style="color:var(--text3);">Шеф-повара</td><td><strong>Михаил Лучшев</strong> (Гранд Отель Европа, стажировки Италия/Хорватия) + <strong>Александр Зуев</strong> (Ереван, Ялта, Таиланд, Michelin-рестораны)</td></tr>
+            <tr><td style="color:var(--text3);">Интервью</td><td>WhereToEat, декабрь 2025: &laquo;Довести до идеала&raquo;</td></tr>
+            <tr><td style="color:var(--text3);">Соцсети основателей</td><td style="color:var(--text3);">Публичные аккаунты не обнаружены</td></tr>
+        </table>
+    </div>
+
+    <div class="grid-2">
+        <!-- Сплетни -->
+        <div class="founder-card">
+            <div class="founder-head" style="border-left:4px solid var(--red);">
+                <h4>Сплетни by Anna Asti</h4>
+                <div class="role">ООО &laquo;СПЛЕТНИ БАР&raquo;, ИНН 7720855210</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Владелец (95%)</td><td><strong>Чесноков Павел Евгеньевич</strong></td></tr>
+                    <tr><td>Миноритарий (5%)</td><td>ООО &laquo;УК РОЖДЕСТВО&raquo;</td></tr>
+                    <tr><td>Гендиректор</td><td>Доль Андрей Николаевич</td></tr>
+                    <tr><td>Управ. партнёр</td><td><strong>Яна Локотош</strong> (концепция)</td></tr>
+                    <tr><td>PR-директор</td><td>Елена Соловьева-Петко</td></tr>
+                    <tr><td>Анна Асти</td><td class="neg">НЕ владелица, лицо проекта</td></tr>
+                    <tr><td>Выручка 2024</td><td style="color:var(--green);">197 млн руб. (+14%)</td></tr>
+                    <tr><td>Франшиза</td><td>Мск, СПб, Новосиб, Краснодар</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- КЭФ -->
+        <div class="founder-card">
+            <div class="founder-head">
+                <h4>КЭФ</h4>
+                <div class="role">Мойка, 72 &mdash; Mychara Group</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Основатель</td><td><strong>Валерий Лоран</strong></td></tr>
+                    <tr><td>УК</td><td>Mychara Group</td></tr>
+                    <tr><td>Площадь</td><td>690 кв. м</td></tr>
+                    <tr><td>Открытие</td><td>Апрель 2025 (на месте &laquo;ДОМ&raquo;)</td></tr>
+                    <tr><td>Концепция</td><td>Средиземноморская, банкеты, live-музыка</td></tr>
+                    <tr><td>Соцсети</td><td>TG + VK (с сайта kefrest.ru)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Ginza -->
+        <div class="founder-card">
+            <div class="founder-head" style="border-left:4px solid var(--red);">
+                <h4>Ginza Project <span class="badge b-red">КРИЗИС</span></h4>
+                <div class="role">Terrassa, Мансарда + 150 проектов</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Сооснователь</td><td class="neg"><strong>Вадим Лапин</strong> &mdash; скончался 15.01.2026 (63 года)</td></tr>
+                    <tr><td>Сооснователь</td><td><strong>Дмитрий Сергеев</strong> &mdash; ведёт отдельные проекты</td></tr>
+                    <tr><td>Наследник</td><td><strong>Марк Лапин</strong> (сын) &mdash; принял управление</td></tr>
+                    <tr><td>Раскол</td><td class="neg">Два &laquo;крыла&raquo; с 2025 года</td></tr>
+                    <tr><td>Масштаб</td><td>150+ проектов, 16 городов, с 2003</td></tr>
+                    <tr><td>Новое</td><td>Сергеев: &laquo;Машараби&raquo; (1500 кв.м, авг 2025)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Раппопорт -->
+        <div class="founder-card">
+            <div class="founder-head">
+                <h4>Александр Раппопорт</h4>
+                <div class="role">Блок (СПб) + Китайская Грамота + 20 проектов</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Профессия</td><td>Адвокат (60% времени &mdash; рестораны)</td></tr>
+                    <tr><td>В СПб</td><td>Блок (ул. Потёмкинская, 4)</td></tr>
+                    <tr><td>Новое (2026)</td><td>&laquo;Машенька&raquo; &mdash; рус. кухня (с Гришечкиным)</td></tr>
+                    <tr><td>Соцсети</td><td style="color:var(--text3);">Публичных аккаунтов нет</td></tr>
+                    <tr><td>Интервью</td><td>РБК Стиль (05.02.2026), Myfin (16.09.2025)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Birch -->
+        <div class="founder-card">
+            <div class="founder-head" style="border-left:4px solid var(--green);">
+                <h4>Birch <span class="badge b-green">133K IG</span></h4>
+                <div class="role">ул. Кирочная, 3 + Дубай</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Шеф/совладелец</td><td><strong>Хезрет-Арслан Бердиев</strong></td></tr>
+                    <tr><td>Сооснователи</td><td>Татьяна Крякунова, А. Санжимитупов, Мурад Бердиев</td></tr>
+                    <tr><td>Год основания</td><td>2017</td></tr>
+                    <tr><td>Instagram</td><td style="color:var(--blue);">@arslan_berdiev</td></tr>
+                    <tr><td>Награды</td><td>#1 WHERETOEAT 2018, 2021; Шеф года 2022</td></tr>
+                    <tr><td>Другое</td><td>Osteria Betulla (СПб), Birch (Дубай)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Кококо -->
+        <div class="founder-card">
+            <div class="founder-head" style="border-left:4px solid var(--purple);">
+                <h4>Кококо / CococoGroup</h4>
+                <div class="role">ул. Некрасова, 8</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Основатель</td><td><strong>Матильда Шнурова</strong></td></tr>
+                    <tr><td>Бренд-шеф</td><td><strong>Игорь Гришечкин</strong> &mdash; <span class="neg">уехал на Бали</span></td></tr>
+                    <tr><td>Статус шефа</td><td>Открыл Satoshi (Бали), работает с Раппопортом</td></tr>
+                    <tr><td>Новое</td><td>&laquo;Машенька&raquo; (Москва, 2026, с Раппопортом)</td></tr>
+                    <tr><td>Instagram</td><td style="color:var(--blue);">@cococogroup.restaurants (72K)</td></tr>
+                    <tr><td>Достижения</td><td>World's 50 Best #104</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Duo Band -->
+        <div class="founder-card">
+            <div class="founder-head" style="border-left:4px solid var(--teal);">
+                <h4>Duo Band</h4>
+                <div class="role">Duo, Harvest, Tartarbar, Перемена + 6 проектов</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Сооснователи</td><td><strong>Дмитрий Блинов</strong> + <strong>Ренат Маликов</strong></td></tr>
+                    <tr><td>Год основания</td><td>2014 (от 4 до 450 сотрудников)</td></tr>
+                    <tr><td>Новое (2025)</td><td>&laquo;Перемена&raquo; &mdash; русская авторская кухня</td></tr>
+                    <tr><td>Дубай</td><td>Ресторан с Bib Gourmand Michelin 2024</td></tr>
+                    <tr><td>Соцсети</td><td style="color:var(--blue);">Telegram: Duo Band</td></tr>
+                    <tr><td>Интервью</td><td>Сноб (25.09.2025), Собака (14.01.2026)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Commode -->
+        <div class="founder-card">
+            <div class="founder-head" style="border-left:4px solid var(--red);">
+                <h4>Commode <span class="badge b-red">АРЕСТ</span></h4>
+                <div class="role">Невский пр., 47 &mdash; тайм-клуб</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Связан с</td><td><strong>Александр Коновалов</strong> (200+ баров в СПб)</td></tr>
+                    <tr><td>Статус</td><td class="neg">Арестован (янв 2022, дача взятки)</td></tr>
+                    <tr><td>Скандалы</td><td>&laquo;Карта сопротивления&raquo; (антиковид)</td></tr>
+                    <tr><td>Формат</td><td>Self-cost bar (4 руб./мин будни)</td></tr>
+                    <tr><td>Instagram</td><td style="color:var(--blue);">@commode.club (18K)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Палкинъ -->
+        <div class="founder-card">
+            <div class="founder-head">
+                <h4>Палкинъ</h4>
+                <div class="role">Невский пр., 47 &mdash; с 1874 года</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Юрлицо</td><td>ООО &laquo;Палкин&raquo;, ИНН 7840439519</td></tr>
+                    <tr><td>Гендиректор</td><td>Коропоровский А. В. (с окт 2024)</td></tr>
+                    <tr><td>Учредители</td><td>Сайкин, Белоглазов, Абросимов (~33% каждый)</td></tr>
+                    <tr><td>Управляющий</td><td>Евгений Кожухов</td></tr>
+                    <tr><td>Штат</td><td>43 чел.</td></tr>
+                    <tr><td>Instagram</td><td style="color:var(--blue);">@palkin_restaurant (3.4K)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Wine Gogh -->
+        <div class="founder-card">
+            <div class="founder-head">
+                <h4>Wine Gogh</h4>
+                <div class="role">Малая Конюшенная, 7 &mdash; Tea House Group</div>
+            </div>
+            <div class="founder-body">
+                <table>
+                    <tr><td>Владелец</td><td>ИП <strong>Хамзаев Владимир Валерьевич</strong></td></tr>
+                    <tr><td>Сеть</td><td>Tea House Group (&laquo;Чайный дом&raquo;)</td></tr>
+                    <tr><td>Шеф</td><td>Илья Ставенский</td></tr>
+                    <tr><td>Открытие</td><td>2019</td></tr>
+                    <tr><td>Ср. чек</td><td>1 300-2 100 руб.</td></tr>
+                    <tr><td>Instagram</td><td style="color:var(--blue);">@winegogh.rest (15K)</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SECTION 25: OPINIONS + IMPLICATIONS + TIMELINE (MERGED) ===== -->
+<div class="section" id="opinions">
+    <div class="section-head">
+        <div class="section-num">25</div>
+        <h2>Мнения рестораторов, выводы и хронология</h2>
+    </div>
+
+    <div class="info-tip">
+        <div class="ii">i</div>
+        <span>23 цитаты из интервью 2025-2026. Источники: Собака.ru, Сноб, РБК Стиль, 50 Best Tastes of Russia, Фонтанка, 78.ru, WhereToEat. Все цитаты верифицированы по первоисточникам.</span>
+    </div>
+
+    <!-- === ТЕМА: ПРОГНОЗ РЫНКА === -->
+    <h3 style="color:var(--gold); margin:28px 0 16px; font-size:1.2em; border-bottom:1px solid var(--border); padding-bottom:8px;">&#128200; Прогноз рынка 2026</h3>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--teal); color:var(--bg);">ДБ</div>
+            <div><div class="quote-name">Дмитрий Блинов</div><div class="quote-role">Сооснователь Duo Band (Duo, Harvest, Перемена)</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Новых трендов и прорывов не случится</div>
+            <div class="quote-context">Прогноз на 2026 год &mdash; консолидация вокруг проверенных концепций, а не инновации. Рынок не ждёт революций.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">29 декабря 2025</div>
+            <div class="quote-source">Собака.ru</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--purple); color:var(--bg);">АМ</div>
+            <div><div class="quote-name">Арам Мнацаканов</div><div class="quote-role">Глава Probka Family</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">В 2026 году выиграют не самые громкие и не самые новаторские, а те, кто умеет держать качество ежедневно</div>
+            <div class="quote-context">Стабильность и постоянство &mdash; главные конкурентные преимущества в текущих условиях.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">Начало 2026</div>
+            <div class="quote-source">50 Best Tastes of Russia</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--orange); color:var(--bg);">АФ</div>
+            <div><div class="quote-name">Антонио Фреза</div><div class="quote-role">Основатель Fresa&rsquo;s Restaurant Group</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Будут популярны небольшие проекты с кратким меню обязательно сезонных блюд</div>
+            <div class="quote-context">Тренд на компактные авторские рестораны, а не крупные мультиформатные комплексы.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">Начало 2026</div>
+            <div class="quote-source">50 Best Tastes of Russia</div>
+        </div>
+    </div>
+
+    <!-- === ТЕМА: КРИЗИС И ЗАКРЫТИЯ === -->
+    <h3 style="color:var(--red); margin:36px 0 16px; font-size:1.2em; border-bottom:1px solid var(--border); padding-bottom:8px;">&#9888; Кризис и волна закрытий</h3>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--red); color:var(--bg);">НМ</div>
+            <div><div class="quote-name">Наталья Митчина</div><div class="quote-role">Директор по развитию, Big Family Restaurant Group</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Я думаю, что волну закрытий мы увидим в марте-мае, ибо у всех ещё есть запас прочности</div>
+            <div class="quote-context">Прогноз: массовые закрытия ресторанов СПб через 1-3 месяца. Заведения, открытые на заёмные деньги, в зоне риска.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">22 января 2026</div>
+            <div class="quote-source">78.ru</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--red); color:var(--bg);">НМ</div>
+            <div><div class="quote-name">Наталья Митчина</div><div class="quote-role">Директор по развитию, Big Family Restaurant Group</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">По моим оценкам, общая выручка в январе 2026 года в лучшем случае будет равна выручке января 2025</div>
+            <div class="quote-context">Стагнация выручки при росте расходов (аренда, ФОТ, НДС 22%) &mdash; сжатие маржи.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">22 января 2026</div>
+            <div class="quote-source">78.ru</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--orange); color:var(--bg);">ГБ</div>
+            <div><div class="quote-name">Галина Белоусова</div><div class="quote-role">Гендиректор Bronka Restaurant Group</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Разговоры о закрытиях, увы, ведутся. В первую очередь под ударом проекты, открытые в последние 2-3 года на заемные деньги</div>
+            <div class="quote-context"><strong style="color:var(--red);">Внимание:</strong> Maison Rouge открыт в ноябре 2025 &mdash; попадает в эту категорию по сроку открытия.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">22 декабря 2025</div>
+            <div class="quote-source">Собака.ru</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--orange); color:var(--bg);">ГБ</div>
+            <div><div class="quote-name">Галина Белоусова</div><div class="quote-role">Гендиректор Bronka Restaurant Group</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Произойдет окончательная сегментация: рынок четко разделится на доступный масс-маркет и авторский премиум</div>
+            <div class="quote-context">Средний сегмент исчезает. MR как премиальный формат &mdash; в правильной нише.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">Начало 2026</div>
+            <div class="quote-source">50 Best Tastes of Russia</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--blue); color:var(--bg);">АМ</div>
+            <div><div class="quote-name">Алексей Мочнов</div><div class="quote-role">Владелец бара Son и ресторана Moa</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">После праздников рынок столкнется с новой реальностью: спрос станет более сдержанным, а давление со стороны расходов &mdash; более ощутимым</div>
+            <div class="quote-context">Январь-февраль 2026 &mdash; момент истины для новых заведений.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">22 декабря 2025</div>
+            <div class="quote-source">Собака.ru</div>
+        </div>
+    </div>
+
+    <!-- === ТЕМА: СТРАТЕГИЯ И ВЫЖИВАНИЕ === -->
+    <h3 style="color:var(--green); margin:36px 0 16px; font-size:1.2em; border-bottom:1px solid var(--border); padding-bottom:8px;">&#128161; Стратегия и выживание</h3>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--gold); color:var(--bg);">АР</div>
+            <div><div class="quote-name">Александр Раппопорт</div><div class="quote-role">Ресторатор (Блок, Китайская Грамота, 20+ проектов)</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Гость может сказать, что он пришёл просто поесть, но &laquo;просто еду&raquo; он легко закажет в доставке</div>
+            <div class="quote-context">Ресторан должен давать впечатления, а не просто еду. Доставка забирает функциональный спрос. Формат &laquo;3-в-1&raquo; MR &mdash; правильный ответ на этот вызов.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">5 февраля 2026</div>
+            <div class="quote-source">РБК Стиль</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--gold); color:var(--bg);">АР</div>
+            <div><div class="quote-name">Александр Раппопорт</div><div class="quote-role">Ресторатор</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">В России большинство ресторанов должны быть русскими: это нормально и естественно</div>
+            <div class="quote-context">Тренд на русскую кухню усиливается. Раппопорт открывает &laquo;Машеньку&raquo; (рус. кухня) с шефом Гришечкиным.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">5 февраля 2026</div>
+            <div class="quote-source">РБК Стиль</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--gold); color:var(--bg);">АР</div>
+            <div><div class="quote-name">Александр Раппопорт</div><div class="quote-role">Ресторатор</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Главная ошибка &mdash; заходить в этот бизнес</div>
+            <div class="quote-context">Заголовок интервью о сложностях ресторанного бизнеса. Высокий порог входа, маржа падает, расходы растут.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">16 сентября 2025</div>
+            <div class="quote-source">Myfin.by</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--teal); color:var(--bg);">ДБ</div>
+            <div><div class="quote-name">Дмитрий Блинов</div><div class="quote-role">Сооснователь Duo Band</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Либо развиваемся... либо будем отмирать. Отмирать я не хочу</div>
+            <div class="quote-context">О необходимости постоянной адаптации. Duo Band вырос от 4 до 450 человек за 11 лет.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">25 сентября 2025</div>
+            <div class="quote-source">Сноб</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--purple); color:var(--bg);">АМ</div>
+            <div><div class="quote-name">Арам Мнацаканов</div><div class="quote-role">Глава Probka Family</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Гостеприимство в 2026 году &mdash; это способность команды ресторана рассеивать напряжение</div>
+            <div class="quote-context">В условиях кризиса атмосфера и сервис важнее, чем когда-либо. Гость приходит за эмоциональной разрядкой.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">Начало 2026</div>
+            <div class="quote-source">50 Best Tastes of Russia</div>
+        </div>
+    </div>
+
+    <!-- === ТЕМА: КАДРЫ === -->
+    <h3 style="color:var(--orange); margin:36px 0 16px; font-size:1.2em; border-bottom:1px solid var(--border); padding-bottom:8px;">&#128101; Кадры и персонал</h3>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--teal); color:var(--bg);">ДБ</div>
+            <div><div class="quote-name">Дмитрий Блинов</div><div class="quote-role">Сооснователь Duo Band</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">У нас практически нет текучки... люди по 8-10 лет работают</div>
+            <div class="quote-context">Секрет удержания &mdash; культура компании и рост внутри. В условиях дефицита кадров (+27% зарплаты на кухне) это критическое преимущество.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">25 сентября 2025</div>
+            <div class="quote-source">Сноб</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--blue); color:var(--bg);">ЮС</div>
+            <div><div class="quote-name">Юлия Сахарова</div><div class="quote-role">Директор hh.ru по СЗФО</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">В общепите пока что установился хрупкий баланс, который может достаточно быстро нарушиться</div>
+            <div class="quote-context">Кадровый дефицит: спрос на работников общепита вырос в 2,4 раза за 2025. Зарплаты растут на 14-27%/год.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">25 июня 2025</div>
+            <div class="quote-source">РБК+ (ПМЭФ-2025)</div>
+        </div>
+    </div>
+
+    <!-- === ТЕМА: ШЕФ-БРЕНД И КУХНЯ === -->
+    <h3 style="color:var(--gold); margin:36px 0 16px; font-size:1.2em; border-bottom:1px solid var(--border); padding-bottom:8px;">&#127869; Шеф-бренд и кухня</h3>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--teal); color:var(--bg);">ДБ</div>
+            <div><div class="quote-name">Дмитрий Блинов</div><div class="quote-role">Duo Band / &laquo;Перемена&raquo;</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Перемена &mdash; это авторская русская кухня на каждый день. Да, не такая уж и простая, но без совка</div>
+            <div class="quote-context">Тренд: русская кухня без ностальгии по СССР. Современная, авторская, повседневная.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">14 января 2026</div>
+            <div class="quote-source">Собака.ru</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--purple); color:var(--bg);">ИГ</div>
+            <div><div class="quote-name">Игорь Гришечкин</div><div class="quote-role">Экс-бренд-шеф Кококо, шеф &laquo;Машеньки&raquo;</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Мне не хотелось снова уходить в какой-то лютый fine dining</div>
+            <div class="quote-context">Тренд на демократизацию. Даже звёздные шефы уходят от fine dining к более доступным форматам.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">18 декабря 2023</div>
+            <div class="quote-source">MarketMedia</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--purple); color:var(--bg);">ИГ</div>
+            <div><div class="quote-name">Игорь Гришечкин</div><div class="quote-role">Шеф-повар</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Моя кухня &mdash; монолог, а не коллективное творчество</div>
+            <div class="quote-context">Философия авторской кухни. Шеф как автор, а не менеджер &mdash; причина, почему шеф-бренды работают.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">&mdash;</div>
+            <div class="quote-source">Bones Magazine</div>
+        </div>
+    </div>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--orange); color:var(--bg);">ДБо</div>
+            <div><div class="quote-name">Дмитрий Богачев</div><div class="quote-role">Шеф/совладелец Mr. Bo, FLO</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Тренд на ностальгию во всех сферах: в кино, музыке, одежде, вкусах</div>
+            <div class="quote-context">Ностальгический тренд проникает в гастрономию. Русская кухня, советский стиль, ретро-интерьеры.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">Начало 2026</div>
+            <div class="quote-source">50 Best Tastes of Russia</div>
+        </div>
+    </div>
+
+    <!-- === ТЕМА: ЭПОХА GINZA === -->
+    <h3 style="color:var(--text3); margin:36px 0 16px; font-size:1.2em; border-bottom:1px solid var(--border); padding-bottom:8px;">&#128220; Эпоха Ginza: прощание и наследие</h3>
+
+    <div class="quote-card" style="border-color:rgba(212,64,64,0.3);">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--purple); color:var(--bg);">АМ</div>
+            <div><div class="quote-name">Арам Мнацаканов</div><div class="quote-role">Глава Probka Family</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Это невосполнимая утрата и для семьи, и для команды</div>
+            <div class="quote-context">О смерти Вадима Лапина (Ginza Project), 15 января 2026.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">20 января 2026</div>
+            <div class="quote-source">Собака.ru</div>
+        </div>
+    </div>
+
+    <div class="quote-card" style="border-color:rgba(212,64,64,0.3);">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--blue); color:var(--bg);">ЛН</div>
+            <div><div class="quote-name">Леонид Ноткин</div><div class="quote-role">Ресторатор, соавтор &laquo;Шаляпин&raquo;</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Он создал первую ресторанную группу: сейчас все называют себя ресторанными группами</div>
+            <div class="quote-context">Вадим Лапин создал формат ресторанной группы в России. Ginza Project = прототип всех ресторанных холдингов.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">20 января 2026</div>
+            <div class="quote-source">Собака.ru</div>
+        </div>
+    </div>
+
+    <div class="quote-card" style="border-color:rgba(212,64,64,0.3);">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--blue); color:var(--bg);">МС</div>
+            <div><div class="quote-name">Михаил Соколов</div><div class="quote-role">Сооснователь Italy Restaurant Group</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Ginza была той самой путеводной звездой, на которую хотелось равняться</div>
+            <div class="quote-context">Ginza как эталон для поколения рестораторов. Потеря лидера дестабилизирует крупнейшего игрока рынка.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">20 января 2026</div>
+            <div class="quote-source">Собака.ru</div>
+        </div>
+    </div>
+
+    <!-- === ТЕМА: БЛИНОВ О БИЗНЕСЕ === -->
+    <h3 style="color:var(--teal); margin:36px 0 16px; font-size:1.2em; border-bottom:1px solid var(--border); padding-bottom:8px;">&#127793; Дмитрий Блинов: мастер-класс роста</h3>
+
+    <div class="quote-card">
+        <div class="quote-header">
+            <div class="quote-avatar" style="background:var(--teal); color:var(--bg);">ДБ</div>
+            <div><div class="quote-name">Дмитрий Блинов</div><div class="quote-role">Сооснователь Duo Band</div></div>
+        </div>
+        <div class="quote-body">
+            <div class="quote-text">Мы точно получилось повлиять на развитие рынка, который сейчас существует</div>
+            <div class="quote-context">Duo Band как системообразующий игрок гастрономической сцены Петербурга. От 4 сотрудников до 450, от 1 ресторана до 10+.</div>
+        </div>
+        <div class="quote-footer">
+            <div class="quote-date">25 сентября 2025</div>
+            <div class="quote-source">Сноб</div>
+        </div>
+    </div>
+
+    <!-- === WHAT IT MEANS FOR MR (from section 3) === -->
+    <h3 style="color:var(--gold); margin:36px 0 16px; font-size:1.3em; border-bottom:1px solid var(--border); padding-bottom:8px;">Что это значит для Maison Rouge</h3>
+
+    <div class="card card-gold">
+        <h3>Выводы из мнений рестораторов</h3>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;">
+            <div style="background:var(--bg3); border-radius:10px; padding:16px; border-left:3px solid var(--green);">
+                <div style="color:var(--green); font-weight:700; margin-bottom:6px;">&#10003; В пользу MR</div>
+                <ul style="color:var(--text2); font-size:0.85em; line-height:1.8; padding-left:16px;">
+                    <li><strong style="color:var(--text);">Формат &laquo;впечатлений&raquo;</strong> &mdash; Раппопорт: &laquo;просто еду закажут в доставке&raquo;. MR как &laquo;3-в-1&raquo; = впечатления</li>
+                    <li><strong style="color:var(--text);">Премиум-ниша верна</strong> &mdash; Белоусова: рынок сегментируется, средний класс исчезает. MR в премиуме</li>
+                    <li><strong style="color:var(--text);">Ginza ослабевает</strong> &mdash; смерть Лапина + раскол. Terrassa/Мансарда могут потерять хватку</li>
+                    <li><strong style="color:var(--text);">Атмосфера = ключ</strong> &mdash; Мнацаканов: &laquo;рассеивать напряжение&raquo;. Капсулы Da Bureau + шоу = это</li>
+                </ul>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px; border-left:3px solid var(--red);">
+                <div style="color:var(--red); font-weight:700; margin-bottom:6px;">&#10007; Риски для MR</div>
+                <ul style="color:var(--text2); font-size:0.85em; line-height:1.8; padding-left:16px;">
+                    <li><strong style="color:var(--text);">Волна закрытий март-май</strong> &mdash; Митчина: &laquo;под ударом проекты, открытые в последние 2-3 года&raquo;. MR = ноябрь 2025</li>
+                    <li><strong style="color:var(--text);">Выручка стагнирует</strong> &mdash; Митчина: &laquo;январь 2026 = январь 2025&raquo;. При росте расходов = сжатие маржи</li>
+                    <li><strong style="color:var(--text);">Трафик падает</strong> &mdash; -8% заказов в январе 2026. Работая 4/7, MR теряет ещё больше</li>
+                    <li><strong style="color:var(--text);">Кадры дорожают</strong> &mdash; +27% зарплаты на кухне, 5-30% недокомплект</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--gold);">
+        <h3>Стратегические рекомендации (из мнений рестораторов)</h3>
+        <ol style="color:var(--text2); font-size:0.9em; line-height:2.2; padding-left:20px;">
+            <li><strong style="color:var(--text);">Строить шеф-бренд Лучшева/Зуева</strong> &mdash; Birch (133K IG) доказывает: шеф-бренд = Instagram-рост = трафик. Интервью WhereToEat уже есть &mdash; масштабировать. Блинов: &laquo;повлиять на рынок&raquo; = стать голосом, а не тенью.</li>
+            <li><strong style="color:var(--text);">Удерживать кадры как Duo Band</strong> &mdash; Блинов: &laquo;нет текучки, 8-10 лет работают&raquo;. При дефиците это выигрышная стратегия. Культура + рост внутри.</li>
+            <li><strong style="color:var(--text);">Давать впечатления, не просто еду</strong> &mdash; Раппопорт прямым текстом. Капсулы, шоу, формат &laquo;3-в-1&raquo; = правильный ответ. Усилить ивент-программу.</li>
+            <li><strong style="color:var(--text);">Держать качество ежедневно</strong> &mdash; Мнацаканов: &laquo;выиграют те, кто умеет держать качество&raquo;. Не гнаться за трендами, а довести базу до идеала.</li>
+            <li><strong style="color:var(--text);">Мониторить Ginza</strong> &mdash; раскол + смена поколения = потенциальное ослабление Terrassa/Мансарды. Быть готовым перехватить их аудиторию.</li>
+        </ol>
+    </div>
+
+    <!-- === TIMELINE (from section 4) === -->
+    <h3 style="color:var(--gold); margin:36px 0 16px; font-size:1.3em; border-bottom:1px solid var(--border); padding-bottom:8px;">Хронология событий рынка (2025-2026)</h3>
+
+    <div class="card">
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-date">Апрель 2025</div>
+                <div class="tl-text"><strong>КЭФ</strong> открывается на Мойке, 72 (Валерий Лоран / Mychara Group). Новый прямой конкурент MR.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">Июнь 2025 (ПМЭФ)</div>
+                <div class="tl-text"><strong>Юлия Сахарова (hh.ru)</strong>: &laquo;хрупкий баланс на рынке труда&raquo;. Спрос на работников общепита вырос в 2,4 раза.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">Август 2025</div>
+                <div class="tl-text"><strong>Дмитрий Сергеев</strong> открывает &laquo;Машараби&raquo; (1500 кв.м, 400 мест) отдельно от основной Ginza. Раскол становится публичным.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">Сентябрь 2025</div>
+                <div class="tl-text"><strong>Duo Band</strong> открывает &laquo;Перемену&raquo; &mdash; авторская русская кухня. <strong>Блинов</strong>: &laquo;либо развиваемся, либо отмираем&raquo;.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">Ноябрь 2025</div>
+                <div class="tl-text"><strong style="color:var(--gold);">Maison Rouge открывается</strong> на Конюшенной пл. 2Г. Формат &laquo;3-в-1&raquo;: ресторан + салон + клуб.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">Декабрь 2025</div>
+                <div class="tl-text"><strong>Белоусова</strong>: &laquo;под ударом проекты на заёмные деньги&raquo;. <strong>Мочнов</strong>: &laquo;после праздников &mdash; новая реальность&raquo;. <strong>Блинов</strong>: &laquo;прорывов не случится&raquo;.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date" style="color:var(--red);">15 января 2026</div>
+                <div class="tl-text"><strong style="color:var(--red);">Вадим Лапин (Ginza) скончался</strong> (63 года). Марк Лапин принимает управление. Рестораторы СПб в шоке.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">22 января 2026</div>
+                <div class="tl-text"><strong>Митчина</strong>: &laquo;волну закрытий увидим в марте-мае&raquo;. Выручка стагнирует при росте расходов.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date">Февраль 2026</div>
+                <div class="tl-text"><strong>Раппопорт</strong>: &laquo;просто еду закажут в доставке&raquo;. Анонсирует &laquo;Машеньку&raquo; с Гришечкиным. <strong>Статистика</strong>: -8% заказов, +15% средний чек.</div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-date" style="color:var(--red);">Март-Май 2026 (прогноз)</div>
+                <div class="tl-text" style="color:var(--red);"><strong>Ожидаемая волна закрытий.</strong> Выживут: те, кто держит качество (Мнацаканов), те, кто адаптируется (Блинов), те, кто даёт впечатления (Раппопорт).</div>
+            </div>
+        </div>
+    </div>
+</div>
 </div> <!-- /tab-full -->
 
 <footer>
-MAISON ROUGE — Полный конкурентный и SWOT-анализ v3.0 &nbsp;|&nbsp; 28+ заведений &nbsp;|&nbsp; 20 юрлиц ФНС &nbsp;|&nbsp; 50+ источников &nbsp;|&nbsp; 5 SVG-графиков &nbsp;|&nbsp; 21 секция &nbsp;|&nbsp; 3 тепловые карты<br>
-Данные: API ФНС, Яндекс Карты, 2ГИС, Rusprofile, Restorating, Restoclub, Forbes, Sobaka.ru, Retail.ru, СберАналитика, NF Group, ANCOR, HeadHunter, spletni.bar, ginza.ru, vc.ru, TAdviser, CheckIndex, Knight Frank<br>
+MAISON ROUGE — Полный конкурентный и SWOT-анализ v3.1 &nbsp;|&nbsp; 28+ заведений &nbsp;|&nbsp; 20 юрлиц ФНС &nbsp;|&nbsp; 65+ источников &nbsp;|&nbsp; 25 секций &nbsp;|&nbsp; 23 цитаты рестораторов &nbsp;|&nbsp; 11 карточек фаундеров<br>
+Данные: API ФНС, Яндекс Карты, 2ГИС, Rusprofile, Restorating, Restoclub, Forbes, Sobaka.ru, Retail.ru, СберАналитика, NF Group, ANCOR, HeadHunter, spletni.bar, ginza.ru, vc.ru, TAdviser, CheckIndex, Knight Frank, РБК, Сноб, 50 Best, 78.ru, WhereToEat, MarketMedia, Telemetr.me<br>
 <span style="color:var(--gold); opacity:0.5;">Конюшенная площадь, 2Г &nbsp;·&nbsp; Санкт-Петербург &nbsp;·&nbsp; Февраль 2026</span>
 </footer>
 
