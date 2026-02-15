@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Rouge — Digital-аудит: после фактчекинга | Февраль 2026</title>
+<style>
+:root {
+    --bg: #0D0B0E;
+    --bg2: #151217;
+    --bg3: #1C1820;
+    --card: #1A1620;
+    --card2: #211D28;
+    --border: #2E2838;
+    --border2: #3D3548;
+    --text: #E8E4EC;
+    --text2: #A8A0B0;
+    --text3: #706880;
+    --gold: #C9A44C;
+    --gold2: #E8C46A;
+    --gold-bg: rgba(201,164,76,0.08);
+    --gold-border: rgba(201,164,76,0.25);
+    --red: #D44040;
+    --red-bg: rgba(212,64,64,0.08);
+    --green: #3DB86A;
+    --green-bg: rgba(61,184,106,0.08);
+    --blue: #4A8FE0;
+    --blue-bg: rgba(74,143,224,0.08);
+    --purple: #9060D0;
+    --purple-bg: rgba(144,96,208,0.08);
+    --orange: #E08040;
+    --orange-bg: rgba(224,128,64,0.08);
+    --teal: #40B0A0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; line-height: 1.65; }
+.container { max-width: 1440px; margin: 0 auto; padding: 24px; }
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 24px 44px;
+    background: linear-gradient(180deg, #1A1018 0%, #120E10 50%, var(--bg) 100%);
+    border-bottom: 1px solid var(--gold-border);
+    position: relative; overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(ellipse, rgba(201,164,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+.hero h1 { font-size: 2.4em; font-weight: 300; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; position: relative; }
+.hero .sub { font-size: 1.1em; color: var(--text2); font-weight: 300; letter-spacing: 0.05em; position: relative; }
+.hero .date { margin-top: 14px; font-size: 0.85em; color: var(--text3); position: relative; }
+.hero .badges { display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap; position: relative; }
+.hero .hbadge { background: rgba(201,164,76,0.1); border: 1px solid var(--gold-border); border-radius: 20px; padding: 6px 16px; font-size: 0.82em; color: var(--gold2); }
+
+/* SECTIONS */
+.section { margin: 48px 0; }
+.section-head {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+.section-num {
+    width: 42px; height: 42px; background: var(--gold); color: var(--bg);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 1.1em; flex-shrink: 0;
+}
+.section-head h2 { font-size: 1.5em; font-weight: 400; letter-spacing: 0.04em; color: var(--text); }
+
+/* CARDS */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 16px 0; transition: border-color 0.2s; }
+.card:hover { border-color: var(--border2); }
+.card-gold { border-color: var(--gold-border); background: linear-gradient(135deg, var(--card) 0%, #1E1A1A 100%); }
+.card-red { border-left: 4px solid var(--red); }
+.card-green { border-left: 4px solid var(--green); }
+.card h3 { color: var(--gold2); font-size: 1.15em; font-weight: 600; margin-bottom: 12px; }
+
+/* GRID */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 1024px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+/* TABLES */
+table { width: 100%; border-collapse: collapse; font-size: 0.88em; margin: 12px 0; }
+th, td { padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+th { background: var(--bg3); color: var(--gold); font-weight: 600; font-size: 0.85em; text-transform: uppercase; letter-spacing: 0.04em; }
+tr:hover { background: rgba(201,164,76,0.03); }
+.pos { color: var(--green); font-weight: 600; }
+.neg { color: var(--red); font-weight: 600; }
+
+/* METRIC */
+.metric { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 20px; text-align: center; }
+.metric .val { font-size: 2em; font-weight: 700; line-height: 1.2; }
+.metric .lbl { color: var(--text3); font-size: 0.82em; margin-top: 6px; }
+
+/* INFO TIP */
+.info-tip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(74,143,224,0.08); border: 1px solid rgba(74,143,224,0.2);
+    border-radius: 8px; padding: 8px 14px; margin-bottom: 16px;
+    font-size: 0.82em; color: var(--blue); width: 100%;
+}
+.info-tip .ii {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(74,143,224,0.2); color: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85em; flex-shrink: 0; font-style: italic;
+}
+.info-tip span { color: var(--text2); }
+.info-tip strong { color: var(--blue); }
+
+/* BADGE */
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.78em; font-weight: 600; }
+.b-green { background: var(--green-bg); color: var(--green); border: 1px solid rgba(61,184,106,0.3); }
+.b-red { background: var(--red-bg); color: var(--red); border: 1px solid rgba(212,64,64,0.3); }
+.b-gold { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-border); }
+.b-blue { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(74,143,224,0.3); }
+.b-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid rgba(224,128,64,0.3); }
+
+/* CORRECTION BOX */
+.correction {
+    display: flex; gap: 20px; align-items: center;
+    padding: 16px 20px; border-radius: 10px; margin: 10px 0;
+    background: rgba(212,64,64,0.05); border: 1px solid rgba(212,64,64,0.2);
+}
+.correction .old { color: var(--red); text-decoration: line-through; flex: 1; }
+.correction .arrow { color: var(--gold); font-size: 1.4em; flex-shrink: 0; }
+.correction .new { color: var(--green); font-weight: 600; flex: 1; }
+
+/* BAR CHART */
+.bar-row { display: flex; align-items: center; gap: 12px; margin: 6px 0; }
+.bar-label { width: 160px; font-size: 0.82em; color: var(--text2); text-align: right; flex-shrink: 0; }
+.bar-track { flex: 1; background: var(--bg3); border-radius: 6px; height: 28px; position: relative; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 6px; display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-size: 0.78em; font-weight: 700; color: var(--bg); min-width: 50px; transition: width 0.5s; }
+.bar-fill-small { justify-content: flex-start; padding-left: 10px; color: var(--text2); }
+
+/* SCHEDULE */
+.sched-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 16px 0; }
+.sched-day { text-align: center; padding: 12px 6px; border-radius: 8px; font-size: 0.82em; }
+.sched-day .day-name { font-weight: 700; margin-bottom: 4px; font-size: 0.9em; }
+.sched-day .day-hours { font-size: 0.78em; line-height: 1.4; }
+.sched-open { background: var(--green-bg); border: 1px solid rgba(61,184,106,0.3); color: var(--green); }
+.sched-closed { background: var(--red-bg); border: 1px solid rgba(212,64,64,0.3); color: var(--red); }
+
+/* DELTA TAG */
+.delta { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.72em; font-weight: 700; vertical-align: middle; margin-left: 6px; }
+.delta-up { background: rgba(61,184,106,0.15); color: var(--green); }
+.delta-down { background: rgba(212,64,64,0.15); color: var(--red); }
+.delta-change { background: rgba(224,128,64,0.15); color: var(--orange); }
+
+@media (max-width: 600px) {
+    .sched-grid { grid-template-columns: repeat(4, 1fr); }
+    .bar-label { width: 100px; font-size: 0.75em; }
+    .correction { flex-direction: column; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+    <h1 style="position:relative">Maison Rouge</h1>
+    <div class="sub">Digital-аудит: после фактчекинга</div>
+    <div class="date">14 февраля 2026 &nbsp;|&nbsp; Корректировка данных v3.0</div>
+    <div class="badges">
+        <span class="hbadge">Фактчек завершён</span>
+        <span class="hbadge">11 ресторанов</span>
+        <span class="hbadge">Instagram + Telegram + VK</span>
+        <span class="hbadge">Режим работы уточнён</span>
+    </div>
+</div>
+
+<div class="container">
+
+<!-- ===== SECTION 0: SUMMARY OF CORRECTIONS ===== -->
+<div class="section">
+    <div class="section-head">
+        <div class="section-num" style="background:var(--red);">!</div>
+        <h2>Исправленные ошибки в отчёте v3.0</h2>
+    </div>
+    <p style="color:var(--text2); margin-bottom:20px;">В ходе фактчекинга выявлены <strong style="color:var(--red);">2 критические ошибки</strong> в основном отчёте, влияющие на стратегические выводы.</p>
+
+    <div class="card card-red">
+        <h3 style="color:var(--red);">Ошибка №1: Instagram Maison Rouge</h3>
+        <div class="correction">
+            <div class="old">~0 подписчиков (не найден)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="new">~5 000 подписчиков (@maisonrrouge)</div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            <strong style="color:var(--text);">Причина ошибки:</strong> Хендл <code style="color:var(--gold);">@maisonrrouge</code> (с двойной &laquo;r&raquo;) не был найден автоматическим аудитом.
+            Аккаунт существует, активен, публикует Reels и Stories. Telegram-канал <code style="color:var(--gold);">@maisonrouge_spb</code> (~426 подписчиков) также существует и указан на официальном сайте.
+        </p>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:8px;">
+            <strong style="color:var(--text);">Влияние на выводы:</strong> Digital-присутствие MR не &laquo;нулевое&raquo;, а &laquo;начальное&raquo;. Оценка SMM повышается с <span class="neg">1/10</span> до <span style="color:var(--orange); font-weight:600;">3/10</span>.
+            Рекомендация &laquo;создать Instagram&raquo; меняется на &laquo;масштабировать существующий Instagram&raquo;.
+        </p>
+    </div>
+
+    <div class="card card-red">
+        <h3 style="color:var(--red);">Ошибка №2: Режим работы Maison Rouge</h3>
+        <div class="correction">
+            <div class="old">Закрыт Пн-Вт, работает Ср-Вс (5 дней)</div>
+            <div class="arrow">&rarr;</div>
+            <div class="new">Закрыт Пн, Вт, Вс &mdash; работает Ср-Сб (4 дня)</div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            <strong style="color:var(--text);">Причина ошибки:</strong> Данные агрегаторов (Flamp, 2ГИС) расходятся между собой. Flamp показывал работу в воскресенье. Фактически ресторан закрыт в воскресенье &mdash; подтверждено заказчиком.
+        </p>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:8px;">
+            <strong style="color:var(--text);">Влияние на выводы:</strong> Потеря оборота &mdash; <strong style="color:var(--red);">3/7 (43%)</strong> вместо прежних 2/7 (29%).
+            Это усиливает рекомендацию о тестировании воскресного бранча и ставит MR в ещё более уязвимую позицию по сравнению с конкурентами, работающими 7/7.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SECTION 1: MR DIGITAL PRESENCE (CORRECTED) ===== -->
+<div class="section">
+    <div class="section-head">
+        <div class="section-num">1</div>
+        <h2>Maison Rouge: цифровое присутствие (исправлено)</h2>
+    </div>
+
+    <div class="info-tip">
+        <div class="ii">i</div>
+        <span>Данные верифицированы по открытым источникам + подтверждены заказчиком (14.02.2026).</span>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:20px;">
+        <div class="metric">
+            <div class="val" style="color:var(--green);">~5 000 <span class="delta delta-up">&uarr; с 0</span></div>
+            <div class="lbl">Instagram @maisonrrouge</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--blue);">~426</div>
+            <div class="lbl">Telegram @maisonrouge_spb</div>
+        </div>
+        <div class="metric">
+            <div class="val" style="color:var(--text3);">Есть</div>
+            <div class="lbl">VK (club233351097)</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Платформы Maison Rouge</h3>
+        <table>
+            <thead>
+                <tr><th>Платформа</th><th>Аккаунт</th><th>Подписчики</th><th>Статус</th><th>Было в отчёте</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">Instagram</td>
+                    <td><code style="color:var(--blue);">@maisonrrouge</code></td>
+                    <td class="pos">~5 000</td>
+                    <td><span class="badge b-green">Активен</span></td>
+                    <td class="neg">~0 (не найден) &mdash; ОШИБКА</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">Telegram</td>
+                    <td><code style="color:var(--blue);">@maisonrouge_spb</code></td>
+                    <td style="color:var(--text);">~426</td>
+                    <td><span class="badge b-green">Активен</span></td>
+                    <td style="color:var(--green);">Есть &mdash; верно</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">VK</td>
+                    <td><code style="color:var(--blue);">club233351097</code></td>
+                    <td style="color:var(--text3);">Неизвестно</td>
+                    <td><span class="badge b-orange">Малоактивен</span></td>
+                    <td class="neg">Нет &mdash; ОШИБКА</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--gold); font-weight:600;">Сайт</td>
+                    <td><code style="color:var(--blue);">maison-rouge.ru</code></td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-green">Активен</span></td>
+                    <td style="color:var(--green);">Да &mdash; верно</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text3);">Facebook</td>
+                    <td style="color:var(--text3);">Не найден</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-red">Нет</span></td>
+                    <td>&mdash;</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text3);">TikTok</td>
+                    <td style="color:var(--text3);">Не найден</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-red">Нет</span></td>
+                    <td>&mdash;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card card-green">
+        <h3 style="color:var(--green);">Пересмотр оценки SMM</h3>
+        <div class="correction" style="background:rgba(61,184,106,0.05); border-color:rgba(61,184,106,0.2);">
+            <div class="old">Оценка SMM: 1/10 КРИТИЧЕСКИ</div>
+            <div class="arrow" style="color:var(--green);">&rarr;</div>
+            <div class="new">Оценка SMM: 3/10 СЛАБО</div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            Instagram есть и ведётся (Reels, Stories). Telegram-канал существует. Но: 5K подписчиков при конкурентах с 18-133K &mdash; всё ещё значительное отставание. Стратегия должна быть &laquo;масштабировать&raquo;, а не &laquo;создать с нуля&raquo;.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SECTION 2: SCHEDULE CORRECTION ===== -->
+<div class="section">
+    <div class="section-head">
+        <div class="section-num">2</div>
+        <h2>Режим работы: исправленный (Ср-Сб)</h2>
+    </div>
+
+    <div class="card">
+        <h3>Maison Rouge &mdash; фактический график</h3>
+        <div class="sched-grid">
+            <div class="sched-day sched-closed">
+                <div class="day-name">ПН</div>
+                <div class="day-hours">Закрыт</div>
+            </div>
+            <div class="sched-day sched-closed">
+                <div class="day-name">ВТ</div>
+                <div class="day-hours">Закрыт</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">СР</div>
+                <div class="day-hours">17:00&ndash;01:00</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">ЧТ</div>
+                <div class="day-hours">17:00&ndash;01:00</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">ПТ</div>
+                <div class="day-hours">17:00&ndash;04:00</div>
+            </div>
+            <div class="sched-day sched-open">
+                <div class="day-name">СБ</div>
+                <div class="day-hours">17:00&ndash;04:00</div>
+            </div>
+            <div class="sched-day sched-closed">
+                <div class="day-name">ВС</div>
+                <div class="day-hours">Закрыт <span class="delta delta-change">NEW</span></div>
+            </div>
+        </div>
+        <p style="color:var(--text2); font-size:0.88em; margin-top:12px;">
+            <strong style="color:var(--red);">4 рабочих дня из 7</strong> &mdash; потеря <strong style="color:var(--red);">43%</strong> потенциального оборота.
+            В отчёте v3.0 было указано 5 дней (Ср-Вс, потеря 29%). Реальность хуже на 14 п.п.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>Сравнение графиков: MR vs Конкуренты</h3>
+        <table>
+            <thead>
+                <tr><th>Заведение</th><th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th><th>Дней</th><th>Потеря</th></tr>
+            </thead>
+            <tbody>
+                <tr style="background:rgba(212,64,64,0.06);">
+                    <td style="color:var(--gold); font-weight:700;">Maison Rouge</td>
+                    <td class="neg">&times;</td>
+                    <td class="neg">&times;</td>
+                    <td class="pos">17-01</td>
+                    <td class="pos">17-01</td>
+                    <td class="pos">17-04</td>
+                    <td class="pos">17-04</td>
+                    <td class="neg">&times;</td>
+                    <td><strong style="color:var(--red);">4</strong></td>
+                    <td class="neg">43%</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--red); font-weight:600;">Сплетни by Asti</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td class="pos">18-06</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+                <tr>
+                    <td>КЭФ</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-23</td>
+                    <td class="pos">12-02</td>
+                    <td class="pos">12-02</td>
+                    <td class="pos">12-23</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+                <tr>
+                    <td>Terrassa</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">11-24</td>
+                    <td class="pos">12-24</td>
+                    <td class="pos">12-24</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+                <tr>
+                    <td>Commode</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-05</td>
+                    <td class="pos">18-07</td>
+                    <td class="pos">18-07</td>
+                    <td class="pos">18-05</td>
+                    <td><strong style="color:var(--green);">7</strong></td>
+                    <td class="pos">0%</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="color:var(--red); font-size:0.88em; margin-top:12px; font-weight:600;">
+            Maison Rouge &mdash; единственное заведение из 5 с выходными днями. Все конкуренты работают 7/7.
+        </p>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--orange);">
+        <h3 style="color:var(--orange);">Рекомендация: Воскресный бранч</h3>
+        <p style="color:var(--text2); font-size:0.9em; line-height:1.7;">
+            Потеря 3/7 оборота критична. Тестировать &laquo;воскресный бранч&raquo; (12:00-17:00) как отдельный формат с минимальным ФОТ (сокращённая бригада). Конкуренты типа Terrassa и КЭФ собирают воскресный трафик с обеда.
+            <br><br>
+            <strong style="color:var(--text);">Потенциал:</strong> Воскресенье &mdash; второй по посещаемости день для ресторанов СПб (после субботы). Добавление 1 дня = +25% к текущей 4-дневной выручке.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SECTION 3: FULL COMPETITOR DIGITAL AUDIT ===== -->
+<div class="section">
+    <div class="section-head">
+        <div class="section-num">3</div>
+        <h2>Конкурентный digital-аудит: полная таблица</h2>
+    </div>
+
+    <div class="info-tip">
+        <div class="ii">i</div>
+        <span>Данные собраны 14.02.2026 из открытых источников: поисковые системы, Telemetr.me, 2ГИС, Яндекс Карты. Числа подписчиков &mdash; приблизительные (Instagram не отдаёт данные без авторизации). Добавлены <strong>Birch</strong> и <strong>Кококо</strong>, которых не было в предыдущей таблице.</span>
+    </div>
+
+    <div class="card" style="overflow-x:auto;">
+        <h3>Сводная таблица: соцсети всех конкурентов</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ресторан</th>
+                    <th>Instagram</th>
+                    <th>IG подписчики</th>
+                    <th>Telegram</th>
+                    <th>TG подписчики</th>
+                    <th>VK</th>
+                    <th>VK подписчики</th>
+                    <th>Оценка SMM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:rgba(201,164,76,0.06);">
+                    <td style="color:var(--gold);">&#9733;</td>
+                    <td style="color:var(--gold); font-weight:700;">Maison Rouge</td>
+                    <td><code>@maisonrrouge</code></td>
+                    <td style="color:var(--orange); font-weight:600;">~5 000 <span class="delta delta-up">&uarr;</span></td>
+                    <td><code>@maisonrouge_spb</code></td>
+                    <td>~426</td>
+                    <td>Есть</td>
+                    <td style="color:var(--text3);">Мало</td>
+                    <td><span class="badge b-orange">3/10</span></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td style="font-weight:600;">Birch <span class="delta delta-change">NEW</span></td>
+                    <td><code>@birch_saintp</code></td>
+                    <td class="pos" style="font-weight:700;">~133 000</td>
+                    <td>Есть (2ГИС)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-green">9/10</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td style="font-weight:600;">Кококо <span class="delta delta-change">NEW</span></td>
+                    <td><code>@cococogroup.restaurants</code></td>
+                    <td class="pos" style="font-weight:700;">~72 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/kokoko_spb</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td><span class="badge b-green">8/10</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td style="color:var(--red); font-weight:600;">Сплетни by Asti</td>
+                    <td><code>@spletni.piter</code></td>
+                    <td class="pos">~56 000</td>
+                    <td style="color:var(--text3);">Нет отд.</td>
+                    <td>&mdash;</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-green">9/10</span></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Мансарда</td>
+                    <td><code>@mansarda_rest</code></td>
+                    <td class="pos">~27 000</td>
+                    <td>@spbginzaproject</td>
+                    <td style="color:var(--text3);">Общий</td>
+                    <td>Через Ginza</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-blue">6/10</span></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Terrassa</td>
+                    <td><code>@terrassa_spb</code></td>
+                    <td class="pos">~24 000</td>
+                    <td>@spbginzaproject</td>
+                    <td style="color:var(--text3);">Общий</td>
+                    <td>Через Ginza</td>
+                    <td>&mdash;</td>
+                    <td><span class="badge b-blue">6/10</span></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Commode</td>
+                    <td><code>@commode.club</code></td>
+                    <td class="pos">~18 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>Есть</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td><span class="badge b-blue">7/10</span></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Wine Gogh</td>
+                    <td><code>@winegogh.rest</code></td>
+                    <td>~15 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/winegogh.rest</td>
+                    <td>~1 179</td>
+                    <td><span class="badge b-blue">7/10</span></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Блок</td>
+                    <td><code>@blokrestaurant</code></td>
+                    <td>~12 000</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/blokrestaurant</td>
+                    <td>~3 472</td>
+                    <td><span class="badge b-blue">6/10</span></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Палкинъ</td>
+                    <td><code>@palkin_restaurant</code></td>
+                    <td>~3 420</td>
+                    <td style="color:var(--text3);">Нет</td>
+                    <td>&mdash;</td>
+                    <td>vk.com/palkin_restaurant</td>
+                    <td>~581</td>
+                    <td><span class="badge b-red">3/10</span></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>КЭФ</td>
+                    <td style="color:var(--text3);">Не определён</td>
+                    <td style="color:var(--text3);">~0</td>
+                    <td>Есть (kefrest.ru)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td>Есть (ID -229935064)</td>
+                    <td style="color:var(--text3);">Мало</td>
+                    <td><span class="badge b-red">2/10</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- BAR CHART: Instagram -->
+    <div class="card">
+        <h3>Instagram: подписчики (исправленная визуализация)</h3>
+        <p style="color:var(--text3); font-size:0.82em; margin-bottom:16px;">Масштаб относительно лидера (Birch = 133K = 100%)</p>
+
+        <div class="bar-row">
+            <div class="bar-label">Birch <span class="delta delta-change">NEW</span></div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:100%; background:var(--green);">133 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Кококо <span class="delta delta-change">NEW</span></div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:54.1%; background:var(--green);">72 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Сплетни by Asti</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:42.1%; background:var(--red);">56 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Мансарда</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:20.3%; background:var(--text3);">27 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Terrassa</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:18.0%; background:var(--text3);">24 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Commode</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:13.5%; background:var(--text3);">18 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Wine Gogh</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:11.3%; background:var(--text3);">15 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Блок</div>
+            <div class="bar-track">
+                <div class="bar-fill" style="width:9.0%; background:var(--text3);">12 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label" style="color:var(--gold); font-weight:600;">Maison Rouge</div>
+            <div class="bar-track">
+                <div class="bar-fill bar-fill-small" style="width:3.8%; background:var(--gold);">5 000</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">Палкинъ</div>
+            <div class="bar-track">
+                <div class="bar-fill bar-fill-small" style="width:2.6%; background:var(--text3);">3 420</div>
+            </div>
+        </div>
+        <div class="bar-row">
+            <div class="bar-label">КЭФ</div>
+            <div class="bar-track">
+                <div class="bar-fill bar-fill-small" style="width:0.5%; background:var(--red); min-width:40px;">~0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Telegram presence -->
+    <div class="card">
+        <h3>Telegram: присутствие ресторанов</h3>
+        <table>
+            <thead>
+                <tr><th>Ресторан</th><th>Telegram-канал</th><th>Подписчики</th><th>Комментарий</th></tr>
+            </thead>
+            <tbody>
+                <tr style="background:rgba(201,164,76,0.06);">
+                    <td style="color:var(--gold); font-weight:600;">Maison Rouge</td>
+                    <td><code>@maisonrouge_spb</code></td>
+                    <td>~426</td>
+                    <td>Указан на сайте. Активен.</td>
+                </tr>
+                <tr>
+                    <td>Terrassa / Мансарда</td>
+                    <td><code>@spbginzaproject</code></td>
+                    <td style="color:var(--text3);">Общий Ginza</td>
+                    <td>Единый канал для всех ресторанов Ginza Project СПб</td>
+                </tr>
+                <tr>
+                    <td>КЭФ</td>
+                    <td>Есть (через kefrest.ru)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td>Ссылка на сайте, хендл не установлен</td>
+                </tr>
+                <tr>
+                    <td>Birch</td>
+                    <td>Есть (через 2ГИС)</td>
+                    <td style="color:var(--text3);">&mdash;</td>
+                    <td>Упоминается в 2ГИС-профиле</td>
+                </tr>
+                <tr>
+                    <td style="color:var(--text3);">Сплетни, Commode, Wine Gogh, Палкинъ, Блок, Кококо</td>
+                    <td style="color:var(--text3);">Не найдены</td>
+                    <td>&mdash;</td>
+                    <td>Telegram-каналы не обнаружены</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="color:var(--text2); font-size:0.85em; margin-top:12px;">
+            <strong style="color:var(--text);">Вывод:</strong> Telegram &mdash; наименее используемая площадка среди ресторанов СПб. Большинство ведут только Instagram.
+            У MR уже есть Telegram-канал, что является конкурентным преимуществом при правильном наполнении.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SECTION 4: STRATEGIC IMPLICATIONS ===== -->
+<div class="section">
+    <div class="section-head">
+        <div class="section-num">4</div>
+        <h2>Что меняется в стратегии</h2>
+    </div>
+
+    <div class="grid-2">
+        <div class="card card-red">
+            <h3 style="color:var(--red);">Было (v3.0 &mdash; с ошибками)</h3>
+            <ul style="color:var(--text2); font-size:0.9em; line-height:2; padding-left:18px;">
+                <li>&laquo;Нулевое digital-присутствие&raquo;</li>
+                <li>Рекомендация: &laquo;Создать Instagram с нуля&raquo;</li>
+                <li>Цель: 10K подписчиков к лету 2026</li>
+                <li>Оценка SMM: <strong style="color:var(--red);">1/10</strong></li>
+                <li>Потеря оборота: 2/7 (29%)</li>
+                <li>График: 5 дней (Ср-Вс)</li>
+                <li>Разрыв с лидером (Сплетни): 56K vs 0 = бесконечный</li>
+            </ul>
+        </div>
+        <div class="card card-green">
+            <h3 style="color:var(--green);">Стало (после фактчекинга)</h3>
+            <ul style="color:var(--text2); font-size:0.9em; line-height:2; padding-left:18px;">
+                <li>&laquo;Начальное digital-присутствие&raquo;</li>
+                <li>Рекомендация: &laquo;Масштабировать Instagram до 15-20K&raquo;</li>
+                <li>Цель: 15K подписчиков к лету 2026 (реалистичнее с базой 5K)</li>
+                <li>Оценка SMM: <strong style="color:var(--orange);">3/10</strong></li>
+                <li>Потеря оборота: <strong style="color:var(--red);">3/7 (43%)</strong> &mdash; хуже!</li>
+                <li>График: <strong style="color:var(--red);">4 дня (Ср-Сб)</strong></li>
+                <li>Реальный лидер: Birch (133K), не Сплетни. Разрыв MR: 26.6x</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card card-gold" style="margin-top:20px;">
+        <h3>Ключевые открытия после фактчекинга</h3>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:12px;">
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <div style="color:var(--gold); font-weight:700; margin-bottom:6px; font-size:0.95em;">1. Birch = digital-чемпион (133K)</div>
+                <div style="color:var(--text2); font-size:0.85em; line-height:1.55;">
+                    Не Сплетни (56K), а именно Birch &mdash; лидер Instagram среди конкурентов МР. Причина: статус &laquo;лучший ресторан России&raquo; + международное присутствие (Дубай). Это подтверждает тезис о шеф-бренде: <strong style="color:var(--text);">сильный шеф = мощный Instagram</strong>.
+                </div>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <div style="color:var(--gold); font-weight:700; margin-bottom:6px; font-size:0.95em;">2. Кококо = 72K (скрытый гигант)</div>
+                <div style="color:var(--text2); font-size:0.85em; line-height:1.55;">
+                    Кококо не входил в предыдущую таблицу, но имеет 72K подписчиков &mdash; второе место. Группа CococoGroup объединяет несколько проектов, что усиливает digital-эффект. Урок: <strong style="color:var(--text);">ресторанная группа > одиночный ресторан</strong>.
+                </div>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <div style="color:var(--gold); font-weight:700; margin-bottom:6px; font-size:0.95em;">3. Telegram &mdash; незанятая ниша</div>
+                <div style="color:var(--text2); font-size:0.85em; line-height:1.55;">
+                    Из 11 ресторанов только 4 имеют Telegram-каналы. MR &mdash; один из них. При правильном контент-плане (анонсы шоу, закулисье, эксклюзивные бронирования) Telegram может стать конкурентным преимуществом.
+                </div>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <div style="color:var(--gold); font-weight:700; margin-bottom:6px; font-size:0.95em;">4. График 4/7 &mdash; критичнее, чем казалось</div>
+                <div style="color:var(--text2); font-size:0.85em; line-height:1.55;">
+                    Все 10 конкурентов работают 7/7. MR &mdash; единственный с выходными. Потеря 43% потенциального оборота при том, что конкуренты на том же адресе (Сплетни) открыты каждый день с 18:00 до 06:00.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="border-left:4px solid var(--gold);">
+        <h3>Обновлённый план действий (Top-3)</h3>
+        <ol style="color:var(--text2); font-size:0.9em; line-height:2.2; padding-left:20px;">
+            <li>
+                <strong style="color:var(--text);">Масштабировать Instagram @maisonrrouge до 15K</strong> &mdash;
+                база 5K уже есть. Reels 5-7 раз/неделю (интерьер капсул, шоу, коктейли). Инфлюенсер-бартер 10-15 блогеров/мес. Цель: 15K к июню 2026.
+            </li>
+            <li>
+                <strong style="color:var(--text);">Развить Telegram @maisonrouge_spb до 2 000</strong> &mdash;
+                конкурентов в Telegram почти нет. Контент: анонсы ивентов, закулисье, эксклюзивные предложения, бронирование через бот. QR-код на каждом столе.
+            </li>
+            <li>
+                <strong style="color:var(--text);">Тестировать воскресенье</strong> &mdash;
+                воскресный бранч 12:00-17:00 (сокращённая бригада). Потенциал: +25% к текущей выручке. Даже частичное открытие (только бар+лаунж) лучше, чем 0.
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!-- ===== SECTION 5: COMPETITOR DEEP DIVE ===== -->
+<div class="section">
+    <div class="section-head">
+        <div class="section-num">5</div>
+        <h2>Детальные карточки конкурентов</h2>
+    </div>
+
+    <!-- Birch -->
+    <div class="card" style="border-left:4px solid var(--green);">
+        <h3>Birch &mdash; <span style="color:var(--green);">133K Instagram</span> <span class="badge b-green">Лидер</span></h3>
+        <div class="grid-2" style="margin-top:12px;">
+            <div>
+                <table>
+                    <tr><td style="color:var(--text3);">Адрес</td><td>ул. Кирочная, 3</td></tr>
+                    <tr><td style="color:var(--text3);">Шеф</td><td>Арслан Бердиев</td></tr>
+                    <tr><td style="color:var(--text3);">Instagram</td><td><code>@birch_saintp</code></td></tr>
+                    <tr><td style="color:var(--text3);">Подписчики</td><td class="pos">~133 000</td></tr>
+                    <tr><td style="color:var(--text3);">Telegram</td><td>Есть (через 2ГИС)</td></tr>
+                    <tr><td style="color:var(--text3);">График</td><td>Ежедневно 16:30-23:00</td></tr>
+                </table>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:8px;">Почему лидер:</p>
+                <ul style="color:var(--text2); font-size:0.85em; line-height:1.8; padding-left:16px;">
+                    <li>Лучший ресторан России (WHERETOEAT 2021, 2023)</li>
+                    <li>Филиал в Дубае &mdash; международная аудитория</li>
+                    <li>Шеф-бренд Бердиева = контент-магнит</li>
+                    <li>Подтверждает: <strong>шеф-бренд &rarr; Instagram-рост</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кококо -->
+    <div class="card" style="border-left:4px solid var(--purple);">
+        <h3>Кококо / CococoGroup &mdash; <span style="color:var(--purple);">72K Instagram</span></h3>
+        <div class="grid-2" style="margin-top:12px;">
+            <div>
+                <table>
+                    <tr><td style="color:var(--text3);">Адрес</td><td>ул. Некрасова, 8</td></tr>
+                    <tr><td style="color:var(--text3);">Шеф</td><td>Игорь Гришечкин</td></tr>
+                    <tr><td style="color:var(--text3);">Instagram</td><td><code>@cococogroup.restaurants</code></td></tr>
+                    <tr><td style="color:var(--text3);">Подписчики</td><td style="color:var(--purple); font-weight:600;">~72 000</td></tr>
+                    <tr><td style="color:var(--text3);">Bistro IG</td><td><code>@cococo_bistro</code> (~22K)</td></tr>
+                    <tr><td style="color:var(--text3);">VK</td><td>vk.com/kokoko_spb</td></tr>
+                </table>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:8px;">Ключевые выводы:</p>
+                <ul style="color:var(--text2); font-size:0.85em; line-height:1.8; padding-left:16px;">
+                    <li>Группа CococoGroup объединяет несколько проектов</li>
+                    <li>Матильда Шнурова &mdash; медийный со-основатель</li>
+                    <li>Мультиформат: Cococouture (fine dining) + Bistro</li>
+                    <li>Урок: <strong>ресторанная группа + медийный партнёр = рост</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Сплетни -->
+    <div class="card" style="border-left:4px solid var(--red);">
+        <h3>Сплетни by Anna Asti &mdash; <span style="color:var(--red);">56K Instagram</span> <span class="badge b-red">Прямой конкурент</span></h3>
+        <div class="grid-2" style="margin-top:12px;">
+            <div>
+                <table>
+                    <tr><td style="color:var(--text3);">Адрес</td><td class="neg">Конюшенная пл., 2Г (тот&nbsp;же!)</td></tr>
+                    <tr><td style="color:var(--text3);">Instagram</td><td><code>@spletni.piter</code></td></tr>
+                    <tr><td style="color:var(--text3);">Подписчики</td><td class="neg">~56 000</td></tr>
+                    <tr><td style="color:var(--text3);">Anna Asti личный</td><td class="neg">~3 000 000+</td></tr>
+                    <tr><td style="color:var(--text3);">Telegram</td><td style="color:var(--text3);">Не найден</td></tr>
+                    <tr><td style="color:var(--text3);">График</td><td class="neg">7/7, 18:00-06:00</td></tr>
+                </table>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--red); font-weight:600; margin-bottom:8px;">Главная угроза:</p>
+                <ul style="color:var(--text2); font-size:0.85em; line-height:1.8; padding-left:16px;">
+                    <li>Тот же адрес &mdash; каннибализация walk-in</li>
+                    <li>Анна Асти = 3М+ личная аудитория</li>
+                    <li>500+ ивентов/год, 7 дней, до 06:00</li>
+                    <li>НО: нет Telegram &mdash; MR может выиграть в этом канале</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Остальные карточки (кратко) -->
+    <div class="card">
+        <h3>Остальные конкуренты: краткие карточки</h3>
+        <div class="grid-3" style="margin-top:12px;">
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:6px;">Мансарда</p>
+                <p style="color:var(--text2); font-size:0.82em;">IG: <code>@mansarda_rest</code> ~27K</p>
+                <p style="color:var(--text2); font-size:0.82em;">TG: @spbginzaproject (Ginza)</p>
+                <p style="color:var(--text2); font-size:0.82em;">7/7, с 11:00/12:00</p>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:6px;">Terrassa</p>
+                <p style="color:var(--text2); font-size:0.82em;">IG: <code>@terrassa_spb</code> ~24K</p>
+                <p style="color:var(--text2); font-size:0.82em;">TG: @spbginzaproject (Ginza)</p>
+                <p style="color:var(--text2); font-size:0.82em;">7/7, с 11:00/12:00</p>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:6px;">Commode</p>
+                <p style="color:var(--text2); font-size:0.82em;">IG: <code>@commode.club</code> ~18K</p>
+                <p style="color:var(--text2); font-size:0.82em;">TG: Нет</p>
+                <p style="color:var(--text2); font-size:0.82em;">7/7, 18:00-05:00/07:00</p>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:6px;">Wine Gogh</p>
+                <p style="color:var(--text2); font-size:0.82em;">IG: <code>@winegogh.rest</code> ~15K</p>
+                <p style="color:var(--text2); font-size:0.82em;">VK: ~1 179</p>
+                <p style="color:var(--text2); font-size:0.82em;">Винный ресторан-галерея</p>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:6px;">Блок</p>
+                <p style="color:var(--text2); font-size:0.82em;">IG: <code>@blokrestaurant</code> ~12K</p>
+                <p style="color:var(--text2); font-size:0.82em;">VK: ~3 472</p>
+                <p style="color:var(--text2); font-size:0.82em;">Раппопорт, мясной ресторан</p>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:6px;">Палкинъ</p>
+                <p style="color:var(--text2); font-size:0.82em;">IG: <code>@palkin_restaurant</code> ~3.4K</p>
+                <p style="color:var(--text2); font-size:0.82em;">VK: ~581</p>
+                <p style="color:var(--text2); font-size:0.82em;">240+ лет, премиум, слабый SMM</p>
+            </div>
+            <div style="background:var(--bg3); border-radius:10px; padding:16px;">
+                <p style="color:var(--gold); font-weight:600; margin-bottom:6px;">КЭФ</p>
+                <p style="color:var(--text2); font-size:0.82em;">IG: не определён</p>
+                <p style="color:var(--text2); font-size:0.82em;">VK: есть, малая</p>
+                <p style="color:var(--text2); font-size:0.82em;">Новый (апрель 2025), SMM в развитии</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SECTION 6: METHODOLOGY ===== -->
+<div class="section">
+    <div class="section-head">
+        <div class="section-num">6</div>
+        <h2>Методология и источники</h2>
+    </div>
+
+    <div class="card">
+        <h3>Как собирались данные</h3>
+        <table>
+            <thead><tr><th>Параметр</th><th>Источники</th><th>Ограничения</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>Instagram-подписчики</td>
+                    <td>Поисковые системы (Google, Exa), мета-описания профилей</td>
+                    <td>Instagram не отдаёт данные без авторизации. Числа приблизительные из кеша поисковиков.</td>
+                </tr>
+                <tr>
+                    <td>Telegram-подписчики</td>
+                    <td>Telemetr.me, 2ГИС, официальные сайты</td>
+                    <td>Не все каналы индексируются Telemetr. Данные MR (426) из Telemetr.</td>
+                </tr>
+                <tr>
+                    <td>VK-подписчики</td>
+                    <td>Поисковые системы, VK API (ограниченный доступ)</td>
+                    <td>VK блокирует внешний скрейпинг. Данные из поисковой выдачи.</td>
+                </tr>
+                <tr>
+                    <td>Режим работы</td>
+                    <td>Официальные сайты, Яндекс Карты, 2ГИС, Flamp, ТоМесто</td>
+                    <td>Агрегаторы расходятся между собой. MR уточнён заказчиком.</td>
+                </tr>
+                <tr>
+                    <td>MR Instagram (5K)</td>
+                    <td>Подтверждение заказчика + найден аккаунт @maisonrrouge</td>
+                    <td>Точное число не верифицировано внешне, принято на доверии.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>Агрегаторы Maison Rouge (digital footprint)</h3>
+        <table>
+            <thead><tr><th>Платформа</th><th>Рейтинг</th><th>Отзывы</th></tr></thead>
+            <tbody>
+                <tr><td>Яндекс Карты</td><td style="color:var(--gold); font-weight:600;">4.9</td><td>86 оценок, 53 отзыва</td></tr>
+                <tr><td>Flamp (2ГИС)</td><td style="color:var(--text3);">&mdash;</td><td>3 отзыва, есть представитель</td></tr>
+                <tr><td>Restorating.ru</td><td style="color:var(--text3);">&mdash;</td><td>Есть карточка</td></tr>
+                <tr><td>Restoran.ru</td><td style="color:var(--text3);">&mdash;</td><td>Есть карточка</td></tr>
+                <tr><td>ToMesto</td><td style="color:var(--text3);">&mdash;</td><td>Есть карточка</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <h3>PR-упоминания Maison Rouge</h3>
+        <table>
+            <thead><tr><th>СМИ</th><th>Дата</th><th>Тип</th></tr></thead>
+            <tbody>
+                <tr><td style="color:var(--gold);">Фонтанка.ру</td><td>08.12.2025</td><td>Обзор / новости</td></tr>
+                <tr><td style="color:var(--gold);">Коммерсантъ</td><td>14.12.2025</td><td>Обзор / новости</td></tr>
+                <tr><td style="color:var(--gold);">Яндекс &laquo;Открытая кухня&raquo;</td><td>01.11.2025</td><td>Анонс открытия</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center; padding:48px 0 24px; border-top:1px solid var(--border); margin-top:48px;">
+    <div style="color:var(--gold); font-size:1.4em; letter-spacing:0.12em; font-weight:300; margin-bottom:8px;">MAISON ROUGE</div>
+    <div style="color:var(--text3); font-size:0.82em;">Digital-аудит: после фактчекинга &nbsp;|&nbsp; 14 февраля 2026</div>
+    <div style="color:var(--text3); font-size:0.75em; margin-top:6px;">Дополнение к основному отчёту Maison_Rouge_Full_Competitive_SWOT.html v3.0</div>
+</div>
+
+</div>
+</body>
+</html>
